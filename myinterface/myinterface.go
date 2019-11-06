@@ -23,6 +23,6 @@ type IPhone struct {
 
 func (iPhone *IPhone) Call() {
 	fmt.Println(iPhone.Name)
-	fmt.Println("I am iPhone, I can call you!")
+	fmt.Println("I am iPhone,  I can call you!")
 	iPhone.Name = "change"
 }
