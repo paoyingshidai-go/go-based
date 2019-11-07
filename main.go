@@ -75,7 +75,7 @@ func main() {
 
 	// 函數作為返回值
 	//method := function.Increase()
-	//fmt.Println(method())
+	//fmt.Println(method())FuncAsParam
 
 	//adder := function.Adder()
 	//fmt.Println(adder(2))
@@ -102,12 +102,6 @@ func main() {
 		println(v)
 	}
 	fmt.Println("GO")
-}
-
-// 这个是函数的模板的实现
-func FuncAsParamImpl(in string) string {
-	fmt.Println("方法的实现, 入参： ", in)
-	return in
 }
 
 // 接口类型判断
