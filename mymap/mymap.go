@@ -8,9 +8,14 @@ import (
 
 func main() {
 
-	ValueOrPoint()
-
-	ThreadSafe2()
+	//ValueOrPoint()
+	c := make(map[string]string)
+	c["1"] = "hello"
+	ValueOrPoint2(c)
+	for k, v := range c {
+		fmt.Println(k, ":", v)
+	}
+	//ThreadSafe2()
 
 }
 
@@ -56,6 +61,11 @@ func ThreadSafe2() {
 		fmt.Println()
 		return true
 	})
+}
+
+// map 是值传递
+func ValueOrPoint2(param map[string]string) {
+	param["1"] = "Michael"
 }
 
 // 值传递还是引用传递

@@ -32,6 +32,17 @@ func Adder() func(int) int {
 // 函数作为参数传入
 type FuncParam func(in string) string
 
+// 函数的实现, 执行方法进行拦截
+func (f FuncParam) Call(w string) string {
+	fmt.Println("Call")
+	return f(w)
+}
+
+//
+func FuncCall(f FuncParam) {
+	f.Call("Michael")
+}
+
 // 这个是函数的模板的实现
 func FuncAsParamImpl(in string) string {
 	fmt.Println("方法的实现, 入参： ", in)
@@ -55,14 +66,15 @@ func FuncAsParam2(fun func(string) string) {
 func main() {
 
 	// 函數作為返回值
-	method := Increase()
-	fmt.Println(method())
-
-	adder := Adder()
-	fmt.Println(adder(2))
-	fmt.Println(adder(2))
-	fmt.Println(adder(2))
+	//method := Increase()
+	//fmt.Println(method())
+	//
+	//adder := Adder()
+	//fmt.Println(adder(2))
+	//fmt.Println(adder(2))
+	//fmt.Println(adder(2))
 
 	me := FuncAsParamImpl
-	FuncAsParam(me)
+	//FuncAsParam(me)
+	FuncCall(me)
 }
