@@ -1,6 +1,13 @@
-package mystruct
+package main
 
 import "fmt"
+
+type Books struct {
+	title   string
+	author  string
+	subject string
+	bookId  int
+}
 
 func PrintBook() {
 	// 创建一个新的结构体
@@ -45,9 +52,42 @@ func printBook(book Books) {
 	fmt.Printf("Book bookId : %d\n", book.bookId)
 }
 
-type Books struct {
-	title   string
-	author  string
-	subject string
-	bookId  int
+//
+//func main() {
+//
+//	var a, b struct{}
+//	print(&a, "\n", &b, "\n")
+//	//fmt.Printf("%p\n%p\n", &a, &b)
+//	fmt.Println(&a == &b)
+//
+//}
+type People interface {
+	Speak(string) string
+}
+
+type Stduent struct{}
+
+func (stu *Stduent) Speak(think string) (talk string) {
+	if think == "bitch" {
+		talk = "You are a good boy"
+	} else {
+		talk = "hi"
+	}
+	return
+}
+
+func main() {
+	var peo People = &Stduent{}
+	think := "bitch"
+	fmt.Println(peo.Speak(think))
+
+	var A = 0
+	var B = 0
+
+	A = B + 1
+	B = 1
+
+	println(A)
+	println(B)
+
 }

@@ -64,12 +64,39 @@ func Channel2() {
 
 }
 
+// 模拟并发情况
+func Channel3() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
+
+	count := 1000
+
+	c := make(chan bool, count)
+
+	var value int = 0
+
+	// 生产者
+	for i := 0; i < count; i++ {
+		go func() {
+			value++
+			c <- true
+		}()
+	}
+
+	// 消费者
+	for i := 0; i < count; i++ {
+		<-c
+	}
+
+	fmt.Println("-------------- main ---------------")
+	fmt.Println(value)
+}
+
 func main() {
 
 	//Channel()
 	//Syn()
 
-	Channel2()
+	Channel3()
 
 	// TODO select 的使用（用于阻塞主线程）
 
