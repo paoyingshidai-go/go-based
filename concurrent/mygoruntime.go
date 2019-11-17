@@ -67,37 +67,114 @@ func Channel2() {
 // 模拟并发情况
 func Channel3() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
-
-	count := 1000
-
+	count := 1000000
 	c := make(chan bool, count)
-
 	var value int = 0
 
-	// 生产者
 	for i := 0; i < count; i++ {
 		go func() {
 			value++
 			c <- true
 		}()
 	}
-
-	// 消费者
 	for i := 0; i < count; i++ {
 		<-c
 	}
-
-	fmt.Println("-------------- main ---------------")
 	fmt.Println(value)
+}
+
+// 使用 锁 解决并发
+func Channel4() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
+	var transferLock = &sync.Mutex{}
+	count := 1000000
+	c := make(chan bool, count)
+	var value = 0
+
+	for i := 0; i < count; i++ {
+		go func() {
+			transferLock.Lock()
+			defer transferLock.Unlock()
+			value++
+			c <- true
+		}()
+	}
+	for i := 0; i < count; i++ {
+		<-c
+	}
+	fmt.Println(value)
+}
+
+// 使用 channel 解决并发问题
+func Channel5() {
+	var value = 0
+	channel := make(chan bool)
+
+	go func() {
+		for {
+			<-channel
+			value++
+		}
+	}()
+
+	for i := 0; i < 1000; i++ {
+		channel <- true
+	}
+	fmt.Println(value)
+}
+
+// 使用 channel 解决并发问题
+func Channel6() {
+	channel := make(chan int)
+	var value = 0
+
+	go func() {
+		channel <- 1
+		value++
+	}()
+
+	for i := 0; i < 100000; i++ {
+		// var v = i
+		select {
+		case <-channel:
+			fmt.Println(value)
+		case <-time.After(2 * time.Second):
+			fmt.Println("超时")
+		}
+	}
+	fmt.Println(value)
+}
+
+func selectTest() {
+
+	channel := make(chan int)
+	var value = 0
+
+	//go func() {
+	//	for i := 0; i < 100000; i++ {
+	//		go func() {
+	//			channel <- 1
+	//		}()
+	//	}
+	//}()
+	for {
+		select {
+		case <-channel:
+			value++
+		case <-time.After(2 * time.Second):
+			fmt.Println("超时")
+		}
+	}
+
 }
 
 func main() {
 
-	//Channel()
-	//Syn()
+	//Channel3()
+	//Channel4()
+	//Channel5()
+	Channel6()
 
-	Channel3()
-
-	// TODO select 的使用（用于阻塞主线程）
+	//selectTest()
 
 }
