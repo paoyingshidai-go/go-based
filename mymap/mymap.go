@@ -17,6 +17,9 @@ func main() {
 	}
 	//ThreadSafe2()
 
+	fmt.Println()
+	ValueOrPoint()
+
 }
 
 // map 是线程不安全的

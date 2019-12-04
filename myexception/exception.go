@@ -69,5 +69,6 @@ func ExceptionInLoop() {
 
 func main() {
 
-	ExceptionInLoop()
+	Defer()
+	//ExceptionInLoop()
 }
