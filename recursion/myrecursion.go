@@ -1,4 +1,4 @@
-package recursion
+package main
 
 /*
 	斐波那契数列
@@ -9,4 +9,8 @@ func Factorial(n uint64) (result uint64) {
 	} else {
 		return Factorial(n-2) + Factorial(n-1)
 	}
+}
+
+func main() {
+	println(Factorial(4))
 }

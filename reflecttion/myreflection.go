@@ -92,18 +92,26 @@ func CallMethod() {
 
 func main() {
 
-	//m := Manager{User: User{1, "OK", 12}, title: "title"}
-	//t := reflect.TypeOf(m)
-	//fmt.Println(t.FieldByIndex([]int{0, 0}))
-	//BaseType()
+	m := Manager{User: User{1, "OK", 12}, title: "title"}
+	t := reflect.TypeOf(m)
+	fmt.Println(t.FieldByIndex([]int{0, 0}))
+	fmt.Println()
 
-	//u := User{1, "OK", 12}
-	//CustomType(&u)
-	//fmt.Println(u)
+	BaseType()
+	fmt.Println()
 
-	//u := User{1, "OK", 12}
-	//Info(u)
+	u := User{1, "OK", 12}
+	CustomType(&u)
+	fmt.Println()
 
-	//CallMethod()
+	fmt.Println(u)
+	fmt.Println()
+
+	u1 := User{1, "OK", 12}
+	Info(u1)
+	fmt.Println()
+
+	CallMethod()
+	fmt.Println()
 
 }
