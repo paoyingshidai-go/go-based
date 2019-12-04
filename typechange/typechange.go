@@ -1,4 +1,4 @@
-package typechange
+package main
 
 import "fmt"
 
@@ -9,4 +9,8 @@ func TypeChange() {
 
 	mean = float32(sum) / float32(count)
 	fmt.Printf("mean 的值为: %f\n", mean)
+}
+
+func main() {
+	TypeChange()
 }
