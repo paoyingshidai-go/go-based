@@ -13,6 +13,15 @@ func SliceCopy() {
 	fmt.Println(s2)
 }
 
+// 切片元素的添加，扩容
+// https://blog.csdn.net/u013474436/article/details/88770501
+func AppendSlice() {
+
+	s := []int{1, 2, 3}
+	fmt.Println(s) //[1 2 3]
+
+}
+
 func main() {
 
 	SliceCopy()

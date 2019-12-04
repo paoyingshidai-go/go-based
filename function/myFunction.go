@@ -56,7 +56,7 @@ func FuncAsParam(fun FuncParam) {
 	fun(str)
 }
 
-// 也可以不需要方法生命约束
+// 也可以不需要方法声明1约束
 func FuncAsParam2(fun func(string) string) {
 	fmt.Println("开始调用传入的参数函数")
 	str := "hello"
