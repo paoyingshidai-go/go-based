@@ -1,4 +1,4 @@
-package point
+package main
 
 import "fmt"
 
@@ -15,4 +15,10 @@ func MyPoint() {
 
 	/* 使用指针访问值 */
 	fmt.Printf("*ip 变量的值: %d\n", *ip)
+}
+
+func main() {
+
+	MyPoint()
+
 }

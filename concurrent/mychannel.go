@@ -52,3 +52,7 @@ func TestSum() {
 
 	fmt.Println(x, y, x+y)
 }
+
+func main() {
+	TestSum()
+}

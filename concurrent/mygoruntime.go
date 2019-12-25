@@ -69,7 +69,7 @@ func Channel3() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	count := 1000000
 	c := make(chan bool, count)
-	var value int = 0
+	var value = 0
 
 	for i := 0; i < count; i++ {
 		go func() {
@@ -117,7 +117,7 @@ func Channel5() {
 		}
 	}()
 
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < 19999; i++ {
 		channel <- true
 	}
 	fmt.Println(value)
@@ -172,8 +172,8 @@ func main() {
 
 	//Channel3()
 	//Channel4()
-	//Channel5()
-	Channel6()
+	Channel5()
+	//Channel6()
 
 	//selectTest()
 
